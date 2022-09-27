@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="text-center">Meldung MC-Frage löschen</h2>
+<div class="container ">
+    <div class="row justify-content-md-center">
+		<div class="col-sm-6">
+            <form action="" method="post">{% csrf_token %}
+                <p>Bist du sicher das du diese Meldung MC-Frage löschen willst?</p>
+                <p><strong>{{ meldungmcfragen.frage }} - {{ meldungmcfragen.benutzername }} - {{ meldungmcfragen.nachricht }}</strong></p>
+                <a class="btn btn-secondary btn-sm" href="{% url 'meldungmcfragen_detail' meldungmcfragen.pk %}">Zurück</a>
+                <button type="submit btn-sm" class="btn btn-danger btn-sm">Löschen</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

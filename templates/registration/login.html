@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  {% if form.errors %}
+    <p>Benutzername oder Passwort nicht korrekt!</p>
+  {% endif %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Benutzername oder Passwort nicht korrekt!</p>
+    {% else %}
+      <p>Bitte Benutzername und Passwort eingeben</p>
+    {% endif %}
+  {% endif %}
+
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <table>
+      <tr>
+        <td>Benutzername:</td>
+        <td>{{ form.username }}</td>
+      </tr>
+      <tr>
+        <td>Passwort:</td>
+        <td>{{ form.password }}</td>
+      </tr>
+    </table>
+    <input type="submit" value="Login" class="btn btn-success btn-sm"/>
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form>
+
+
+  <p><a href="{% url 'password_reset' %}">Passwort vergessen?</a></p>
+
+{% endblock %}

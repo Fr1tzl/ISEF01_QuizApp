@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-md-center">
+		<div class="col-sm-7 ">
+			<h2 class="text-center">Frage Details</h2>
+            <table class="table table-sm table-striped" border="3px">
+    		<tr><td width=50%>Name:</td><td class="text-center"> {{ frage.name }}</td></tr>
+			<tr><td> Kurs:</td><td class="text-center"> {{ frage.kurs }}</td></tr>
+    		<tr><td> Antwort1:</td><td class="text-center"> {{ frage.antwort1 }}</td></tr>
+			<tr><td> Antwort1 richtig?:</td><td class="text-center">{{ frage.antwort1richtig }}</td></tr>
+			<tr><td> Antwort2:</td><td class="text-center"> {{ frage.antwort2 }}</td></tr>
+			<tr><td> Antwort2 richtig?:</td><td class="text-center">{{ frage.antwort2richtig }}</td></tr>
+			<tr><td> Antwort3:</td><td class="text-center"> {{ frage.antwort3 }}</td></tr>
+			<tr><td> Antwort3 richtig?:</td><td class="text-center">{{ frage.antwort3richtig }}</td></tr>
+			<tr><td> Antwort4:</td><td class="text-center"> {{ frage.antwort4 }}</td></tr>
+			<tr><td> Antwort4 richtig?:</td><td class="text-center">{{ frage.antwort4richtig }}</td></tr>
+			<tr><td> Frage freigegeben?:</td><td class="text-center">{{ frage.freigegeben }}</td></tr>
+			</table>
+    		<a class="btn btn-secondary btn-sm" href="{% url 'frage_start' %}">Zurück</a>
+    		<a class="btn btn-danger btn-sm" href="{% url 'frage_delete' frage.pk %}">Löschen</a>
+    		<a class="btn btn-success btn-sm" href="{% url 'frage_update' frage.pk %}">Bearbeiten</a>
+		</div>
+    </div>
+</div>
+
+{% endblock content %}

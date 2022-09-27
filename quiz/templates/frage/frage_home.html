@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-center">
+	<p><button type="button" class="btn btn-outline-secondary" onclick="location.href='{% url 'frage_nichtfreigegeben'  %}'"> Nicht freigegebene MC-Fragen</button></p>
+	<p><button type="button" class="btn btn-outline-secondary" onclick="location.href='{% url 'meldungmcfrage_select'  %}'"> MC-Fragen melden</button></p>
+	<p><button type="button" class="btn btn-outline-secondary" onclick="location.href='{% url 'meldungmcfragen'  %}'"> Alle gemeldete MC-Fragen</button></p>
+	<p><button type="button" class="btn btn-outline-secondary" onclick="location.href='{% url 'meldungmcfragen_ungelesen'  %}'"> Alle nicht gelesenen gemeldeten MC-Fragen</button></p>
+</div>
+<div class="container text-center">
+	<div class="row justify-content-md-center">
+		<div class="col-sm-8 ">
+            <h2>Alle MC-Fragen</h2>
+            <table class ="table border table-hover table-striped">
+                <thead class="table-dark">
+					<th width="100" scope = "col">Kurs ID</th>
+					<th  scope = "col">Kursname</th>
+
+				</thead>
+                <tbody>
+                {% for frage in object_list %}
+                <tr>
+	                    <td><a href="{% url 'frage_detail' frage.pk %}">{{ frage.kurs }}</a></td>
+                        <td><a href="{% url 'frage_detail' frage.pk %}">{{ frage.name }}</a></td>
+                {% endfor %}
+                </tbody>
+            </table>
+            <a class="btn btn-success btn-sm" href="{% url 'neue_frage' %}">+ Neue Frage hinzufügen</a>
+        </div>
+	</div>
+</div>
+{% endblock content %}

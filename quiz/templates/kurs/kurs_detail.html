@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'messages.html' %}
+    <h2 class="text-center">Kursdetails</h2>
+<div class="container">
+    <div class="row justify-content-md-center">
+		<div class="col-sm-7 ">
+            <table class="table table-sm table-striped" border="3px">
+                <tr><td width=50%>Name:</td><td class="text-center">  {{kurs.name }}</td></tr>
+                <tr><td>Beschreibung:</td><td class="text-center">  {{kurs.beschreibung}}</td></tr>
+            </table>
+            <a class="btn btn-secondary btn-sm" href="{% url 'kurs_start' %}">Zurück</a>
+            <a class="btn btn-danger btn-sm" href="{% url 'kurs_delete' kurs.pk %}">Löschen</a>
+            <a class="btn btn-success btn-sm" href="{% url 'kurs_update' kurs.pk %}">Bearbeiten</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

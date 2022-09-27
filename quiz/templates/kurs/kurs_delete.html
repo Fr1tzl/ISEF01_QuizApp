@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'messages.html' %}
+<h2 class="text-center">Kurs löschen</h2>
+<div class="container ">
+    <div class="row justify-content-md-center">
+		<div class="col-sm-7">
+            <form action="" method="post">{% csrf_token %}
+                <p>Bist du sicher das du diesen Kurs löschen willst?</p>
+                <p><strong>{{ kurs.name }} {{ kurs.beschreibung}}</strong></p>
+                <a class="btn btn-secondary btn-sm" href="{% url 'kurs_detail' kurs.pk %}">Zurück</a>
+                <button type="submit btn-sm" class="btn btn-danger btn-sm">Löschen</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

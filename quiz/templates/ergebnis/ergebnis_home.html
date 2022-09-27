@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-center">
+	<p><button type="button" class="btn btn-outline-secondary" onclick="location.href='{% url 'ergebnis_topgroupbypunkte'  %}'"> Rangliste: Gesamtpunkte</button></p>
+	<p><button type="button" class="btn btn-outline-secondary " onclick="location.href='{% url 'ergebnis_topmcgroupbypunkte' %}'"> Rangliste: Multiple Choice</button></p>
+	<p><button type="button" class="btn btn-outline-secondary" onclick="location.href='{% url 'ergebnis_toprfgroupbypunkte' %}'"> Rangliste: Richtig oder Falsch?</button></p>
+</div>
+
+{% endblock content %}

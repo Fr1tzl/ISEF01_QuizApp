@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-md-center">
+		<div class="col-sm-4 ">
+        {% include 'messages.html' %}
+	<h2>MC-Frage melden</h2>
+  <form method="post" id="kursForm" data-kurs-url="{% url 'ajax_lade_mcfragen' %}" novalidate>
+    {% csrf_token %}
+    <table>
+      {{ form.as_table }}
+    </table>
+    <button class="btn btn-success btn-sm" type="submit">Speichern</button>
+    <a class="btn btn-danger btn-sm" href="{% url 'index' %}">Abbrechen</a>
+  </form>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script>
+    $("#id_kurs").change(function () {
+      var url = $("#kursForm").attr("data-kurs-url");  
+      var kursId = $(this).val();  
+
+      $.ajax({                       
+        url: url,                   
+        data: {
+          'kurs': kursId       
+        },
+        success: function (data) {   
+          $("#id_frage").html(data);  
+        }
+      });
+
+    });
+  </script>
+{% endblock content %}

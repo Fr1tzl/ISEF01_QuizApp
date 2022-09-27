@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+{% load static %}
+<div class="container ">
+{% include 'messages.html' %}
+<h1>Willkommen beim RF-Test zu {{kursname}} {{kursbeschreibung}}</h1>
+<div align="right " id="displaytimer"><b>Timer: 0 seconds</b></div>
+ 
+ <form method='post' action=''>
+    {% csrf_token %}
+    {% for rf in rffragen%}
+    <div class="form-group">
+      <label for="fragen">{{rf.name}}</label>
+    </div>
+    <div class="form-check">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="{{rf.name}}" id="gridRadios1" value="1">
+            <label class="form-check-label" for="gridRadios1">
+                Wahr
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="{{rf.name}}" id="gridRadios2" value="2">
+            <label class="form-check-label" for="gridRadios2">
+                Falsch
+            </label>
+        </div>
+        <br>
+    </div>  
+	
+    {% endfor %}
+    <input id='timer' type='hidden' name="timer" value="">
+
+    <br>
+    <button type="submit" class="btn btn-success">Abgeben</button>
+  </form>
+    {% block script %}
+        <script>
+ 
+            console.log('hello world')
+            const timer=document.getElementById('displaytimer')
+            console.log(timer.textContent)
+            const inputtag = document.getElementById('timer')
+ 
+            t=0
+            setInterval(()=>{
+                t+=1
+                timer.innerHTML ="<b>Timer: " +t+" seconds</b>"
+                inputtag.value = t
+            },1000)
+        </script>
+    {% endblock script %}
+ 
+</div>
+{% endblock %}

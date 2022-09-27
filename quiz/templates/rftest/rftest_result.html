@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+ 
+<div class="container ">
+ {% include 'messages.html' %}       
+    <div class="card-columns" style="padding: 10px; margin: 20px;">
+        <div class="card" align="centre " style="width: 32rem; border:5px black solid">
+            <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/6/67/IU_International_Hochschule_Logo_2021_inglese.png?1647985461256" alt="Hier sollte das Logo der IU erscheinen!">
+            <div class="card-body">
+                <h5 class="card-title">Punkte: {{punkte}}</h5>
+				<p class="card-text">Anzahl Fragen: {{rffragenanzahl}}</p>
+                <p class="card-text">Prozent: {{prozent}}%</p>
+                <p class="card-text">benötigte Zeit: {{time}} seconds</p>
+                <p class="card-text">Korrekte Antworten: {{korrekt}}</p>
+                <p class="card-text">Falsche Antworten: {{falsch}}</p>
+                <h5 class="text-center">Viel Glück beim nächsten Quiz!</h5>
+            </div>
+        </div>
+    </div>
+ 
+</div>
+ 
+{% endblock %}

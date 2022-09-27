@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+{% load static %}
+<div class="container ">
+{% include 'messages.html' %}
+<h1>Willkommen beim MC-Test zu {{kursname}} {{kursbeschreibung}}</h1>
+<div align="right " id="displaytimer"><b>Timer: 0 seconds</b></div>
+ 
+ <form method='post' action=''>
+    {% csrf_token %}
+    {% for f  in mcfragen%}
+    <div class="form-group">
+      <label for="fragen">{{f.name}}</label>
+    </div>
+    <div class="form-check">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="{{f.name}}" id="defaultCheck1" value="1">
+            <label class="form-check-label" for="defaultCheck1">
+                {{f.antwort1}}
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="{{f.name}}" id="defaultCheck2" value="2">
+            <label class="form-check-label" for="defaultCheck2">
+                {{f.antwort2}}
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="{{f.name}}" id="defaultCheck3" value="3">
+            <label class="form-check-label" for="defaultCheck3">
+                {{f.antwort3}}
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="{{f.name}}" id="defaultCheck4" value="4">
+            <label class="form-check-label" for="defaultCheck4">
+                {{f.antwort4}}
+            </label>
+        </div>
+        <br>
+    </div>    
+    {% endfor %}
+    <input id='timer' type='hidden' name="timer" value="">
+    <br>
+    <button type="submit" class="btn btn-success">Abgeben</button>
+  </form>
+    {% block script %}
+        <script>
+ 
+            console.log('hello world')
+            const timer=document.getElementById('displaytimer')
+            console.log(timer.textContent)
+            const inputtag = document.getElementById('timer')
+ 
+            t=0
+            setInterval(()=>{
+                t+=1
+                timer.innerHTML ="<b>Timer: " +t+" seconds</b>"
+                inputtag.value = t
+            },1000)
+        </script>
+    {% endblock script %}
+ 
+</div>
+{% endblock %}

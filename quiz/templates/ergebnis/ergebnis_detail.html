@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2 class="text-center">Ergebnis Details</h2>
+
+<div class="container">
+    <div class="row justify-content-md-center">
+		<div class="col-sm-4 ">
+            <table class="table table-sm table-striped" border="3px">
+            <tr><td width=50%>Testmodus:</td><td class="text-center"> {{ ergebnis.testmodus }}</td></tr>
+	        <tr><td>Benutzername:</td><td class="text-center"> {{ ergebnis.benutzername }}</td></tr>
+            <tr><td>Punkte:</td><td class="text-center"> {{ ergebnis.punkte }}</td></tr>
+            <tr><td>KursID:</td><td class="text-center"> {{ ergebnis.kursid }}</td></tr>
+            <tr><td>Kursname:</td><td class="text-center"> {{ ergebnis.kursname }}</td></tr>
+            <tr><td>Zeit (Sekunden):</td><td class="text-center"> {{ ergebnis.zeitsekunden }}</td></tr>
+            <tr><td>Datum:</td><td class="text-center"> {{ ergebnis.datum }}</td></tr>
+            <tr><td>Fragen Total:</td><td class="text-center"> {{ ergebnis.fragentotal }}</td></tr>
+            <tr><td>Fragen korrekt:</td><td class="text-center"> {{ ergebnis.fragenkorrekt }}</td></tr>
+            <tr><td>Fragen falsch:</td><td class="text-center"> {{ ergebnis.fragenfalsch }}</td></tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <a class="btn btn-danger btn-sm" href="{% url 'ergebnis_start' %}">Zurück</a>
+</div>
+{% endblock content %}

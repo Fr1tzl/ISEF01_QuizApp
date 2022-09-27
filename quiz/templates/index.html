@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-center">
+  <p>Willkommen in der Quiz App!</p>
+  <p>Die Quiz App verfügt aktuell über die folgenden Einträge:</p>
+  <ul>
+    <strong>Kurse:</strong> {{ num_kurs }}</br>
+    <strong>MC-Fragen:</strong> {{ num_mcfrage }}</br>
+	<strong>RF-Fragen:</strong> {{ num_rffrage }}</br>
+  </ul>
+ <a class="btn btn-success btn-sm" href="{% url 'mctest_select' %}">Multiple Choice</br>Test Starten</a>
+ <a class="btn btn-success btn-sm" href="{% url 'rftest_select' %}">Richtig oder Falsch?</br>Test Starten</a>
+</div>
+{% endblock %}

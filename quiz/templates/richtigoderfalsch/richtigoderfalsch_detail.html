@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-md-center">
+		<div class="col-sm-7 ">
+            <h2 class="text-center">RF-Frage Details</h2>
+            <table class="table table-sm table-striped" border="3px">
+            <tr><td width=50%>Name:</td><td class="text-center">  {{ richtigoderfalsch.name }}</td></tr>
+	        <tr><td> Kurs:</td><td class="text-center">  {{ richtigoderfalsch.kurs }}</td></tr>
+	        <tr><td> Behauptung wahr?:</td><td class="text-center">  {{ richtigoderfalsch.behauptungrichtig }}</td></tr>
+			<tr><td> Frage freigegeben?:</td><td class="text-center">{{ richtigoderfalsch.freigegeben }}</td></tr>
+            </table>
+
+            <a class="btn btn-secondary btn-sm" href="{% url 'richtigoderfalsch_start' %}">Zurück</a>
+            <a class="btn btn-danger btn-sm" href="{% url 'richtigoderfalsch_delete' richtigoderfalsch.pk %}">Löschen</a>
+            <a class="btn btn-success btn-sm" href="{% url 'richtigoderfalsch_update' richtigoderfalsch.pk %}">Bearbeiten</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

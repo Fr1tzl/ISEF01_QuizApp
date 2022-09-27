@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-md-center">
+		<div class="col-sm-4 ">
+        {% include 'messages.html' %}
+            <form method="POST">
+                <fieldset>
+                    <legend>Wähle Kurs für RF-Test</legend>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+		            <a class="btn btn-danger btn-sm" href="{% url 'index' %}">Abbrechen</a>
+                    <button type="submit" class="btn btn-success btn-sm">OK</button>
+                </fieldset>
+            </form>
+        </div>
+	</div>
+</div>
+{% endblock content %}

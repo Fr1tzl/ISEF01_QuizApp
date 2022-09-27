@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'messages.html' %}
+<div class="container">
+    <div class="row justify-content-md-center">
+		<div class="col-sm-7 ">
+			<h2 class="text-center">Meldung RF-Frage Details</h2>
+            <table class="table table-sm table-striped" border="3px">
+    		<tr><td width=50%>Kursname:</td><td class="text-center">{{meldungrffragen.kursname}}</td></tr>
+			<tr><td> Kursid:</td><td class="text-center"> {{meldungrffragen.kursid }}</td></tr>
+    		<tr><td> Frageid:</td><td class="text-center"> {{meldungrffragen.frageid }}</td></tr>
+			<tr><td> Frage:</td><td class="text-center"> {{meldungrffragen.frage }}</td></tr>
+			<tr><td> Nachricht:</td><td class="text-center"> {{meldungrffragen.nachricht }}</td></tr>
+			<tr><td> Benutzername:</td><td class="text-center"> {{meldungrffragen.benutzername }}</td></tr>
+			<tr><td> Gelesen:</td><td class="text-center"> {{meldungrffragen.gelesen }}</td></tr>
+
+			</table>
+    		<a class="btn btn-secondary btn-sm" href="{% url 'meldungrffragen' %}">Zurück</a>
+			<a class="btn btn-danger btn-sm" href="{% url 'meldungrffragen_delete' meldungrffragen.pk %}">Löschen</a>
+    		<a class="btn btn-success btn-sm" href="{% url 'meldungrffragen_update' meldungrffragen.pk %}">Bearbeiten</a>
+
+		</div>
+    </div>
+</div>
+
+{% endblock content %}
